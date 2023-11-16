@@ -11,9 +11,4 @@ Rails.application.routes.draw do
 
   # Current user path
   get '/current_user', to: 'current_user#index'
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
