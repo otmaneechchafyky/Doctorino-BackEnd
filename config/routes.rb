@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   }
 
   # Current user path
-  get '/current_user', to: 'current_user#index'
+  get '/current_user', to: 'current_user#show'
 end
