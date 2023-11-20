@@ -9,7 +9,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if request.method == "POST" && resource.persisted?
       render json: {
         status: {code: 200, message: "Signed up sucessfully."},
-        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }, status: :ok
     elsif request.method == "DELETE"
       render json: {
