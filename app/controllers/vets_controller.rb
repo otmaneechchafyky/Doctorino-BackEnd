@@ -1,5 +1,5 @@
 class VetsController < ApplicationController
-  before_action :set_vet, only: %i[show]
+  before_action :set_vet, only: %i[show destroy]
   def index
     @vets = []
     @vets_list = Vet.all
@@ -20,6 +20,8 @@ class VetsController < ApplicationController
   end
 
   def destroy
+    @vet.destroy
+    render json: { message: 'Vet deleted successfully.'}, status: :ok
   end
 
   def create
