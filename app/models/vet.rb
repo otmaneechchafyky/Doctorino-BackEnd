@@ -1,6 +1,6 @@
 class Vet < ApplicationRecord
   belongs_to :specialization
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
 
   validates :name, presence: true
   validates :vet_photo, presence: true
