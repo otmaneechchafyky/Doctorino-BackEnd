@@ -55,6 +55,8 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
 
+  config.hosts << ""
+
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
