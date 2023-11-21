@@ -5,13 +5,20 @@ class AnimalsController < ApplicationController
         @animals_list = Animal.all
         @animals = []
         @animals_list.each do |animal|
-            @animals << AnimalSerializer.new(animal).serializable_hash[:data][:attributes]
+            @animals << {
+                data: AnimalSerializer.new(animal).serializable_hash[:data][:attributes],
+                animal_owner: UserSerializer.new(animal.owner).serializable_hash[:data][:attributes]
+            }
         end
         render json: @animals
     end
 
     def show # animals/:id
-        render json: AnimalSerializer.new(@animal).serializable_hash[:data][:attributes]
+        render json: {
+            data: AnimalSerializer.new(@animal).serializable_hash[:data][:attributes],
+            animal_owner: UserSerializer.new(@animal.owner).serializable_hash[:data][:attributes],
+            animal_genre: GenreSerializer.new(@animal.genre).serializable_hash[:data][:attributes]
+        }
     end
 
     def destroy # Delete animals/:id
