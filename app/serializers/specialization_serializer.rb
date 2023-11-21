@@ -1,4 +1,4 @@
 class SpecializationSerializer
   include JSONAPI::Serializer
-  attributes :id :name
+  attributes :id, :name
 end
