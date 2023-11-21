@@ -25,11 +25,23 @@ class VetsController < ApplicationController
   end
 
   def create
+    @vet = Vet.new(vet_params)
+    if @vet.save
+        render json: { message: 'Vet created successfully.',
+        vet: VetSerializer.new(@vet).serializable_hash[:data][:attributes] },
+        status: :created
+    else
+        render json: { errors: @vet.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
 
   def set_vet
     @vet = Vet.find(params[:id])
+  end
+
+  def vet_params
+    params.require(:vet).permit(:name, :vet_photo, :available_from, :available_to, :fees, :bio, :specialization_id)
   end
 end
