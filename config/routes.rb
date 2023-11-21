@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   # Animals, Vets, Appointments, Genres, Specializations ressources
   resources :animals
-  resources :vets, only: [:index, :show]
+  resources :vets, only: [:index, :show, :create, :destroy]
   resources :appointments, only: [:index, :show, :create, :destroy]
   resources :genres, only: [:index]
   resources :specializations, only: [:index]
