@@ -1,6 +1,6 @@
 class VetSerializer
   include JSONAPI::Serializer
-  attributes :id, :name, :vet_photo, :available_from, :available_to, :fees, :bio, :specialization_id
+  attributes :id, :name, :vet_photo, :available_from, :available_to, :fees, :bio
   attribute :created_at do |vet|
     vet.created_at && vet.created_at.strftime('%m/%d/%Y')
   end
