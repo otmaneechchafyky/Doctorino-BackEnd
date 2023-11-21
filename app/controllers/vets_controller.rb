@@ -1,5 +1,5 @@
 class VetsController < ApplicationController
-  before_action :set_vet, only: %i[show destroy]
+  before_action :set_vet, only: %i[show destroy, update]
   def index
     @vets = []
     @vets_list = Vet.all
@@ -38,7 +38,7 @@ class VetsController < ApplicationController
   def update
     if @vet.update(vet_params)
         render json: { message: 'Vet updated successfully.',
-        vet: VetSerializer.new(@vet).serializable_hash[:data][:attributes] },
+        updated_vet: VetSerializer.new(@vet).serializable_hash[:data][:attributes] },
         status: :ok
     else
         render json: { errors: @vet.errors.full_messages }, status: :unprocessable_entity
