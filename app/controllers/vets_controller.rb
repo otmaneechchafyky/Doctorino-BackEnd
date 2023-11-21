@@ -35,6 +35,16 @@ class VetsController < ApplicationController
     end
   end
 
+  def update
+    if @vet.update(vet_params)
+        render json: { message: 'Vet updated successfully.',
+        vet: VetSerializer.new(@vet).serializable_hash[:data][:attributes] },
+        status: :ok
+    else
+        render json: { errors: @vet.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_vet
