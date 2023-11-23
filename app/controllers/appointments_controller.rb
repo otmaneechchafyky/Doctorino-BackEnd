@@ -25,8 +25,8 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.new(appointment_params)
         if @appointment.save
             render json: { message: 'Appointment created successfully.',
-            animal: AnimalSerializer.new(appointment.animal).serializable_hash[:data][:attributes],
-            vet: VetSerializer.new(appointment.vet).serializable_hash[:data][:attributes] },
+            animal: AnimalSerializer.new(@appointment.animal).serializable_hash[:data][:attributes],
+            vet: VetSerializer.new(@appointment.vet).serializable_hash[:data][:attributes] },
             status: :created
         else
             render json: { errors: @appointment.errors.full_messages }, status: :unprocessable_entity
