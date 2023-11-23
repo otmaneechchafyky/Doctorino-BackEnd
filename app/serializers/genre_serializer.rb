@@ -1,4 +1,4 @@
 class GenreSerializer
   include JSONAPI::Serializer
-  attributes 
+  attributes :id, :name
 end

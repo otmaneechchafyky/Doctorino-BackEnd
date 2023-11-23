@@ -5,5 +5,5 @@ class Appointment < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true
   validates :location, presence: true
-  validates :duration, presence: true, inclusion: { in: [1, 2, 3, 4] }
+  validates :duration, presence: true
 end
