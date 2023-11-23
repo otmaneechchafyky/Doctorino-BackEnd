@@ -1,5 +1,5 @@
 class VetsController < ApplicationController
-  before_action :set_vet, only: %i[show destroy, update]
+  before_action :set_vet, only: %i[show destroy update]
   def index
     @vets = []
     @vets_list = Vet.all

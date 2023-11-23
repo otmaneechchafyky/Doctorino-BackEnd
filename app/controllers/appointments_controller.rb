@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+    before_action :set_appointment, only: %i[show destroy update]
     def index
         @appointments = []
         @appointments_list = Appointment.all
@@ -10,6 +11,14 @@ class AppointmentsController < ApplicationController
           }
         end
         render json: @appointments
+    end
+
+    def show
+        render json: {
+            data: AppointmentSerializer.new(@appointment).serializable_hash[:data][:attributes],
+            animal: AnimalSerializer.new(@appointment.animal).serializable_hash[:data][:attributes],
+            vet: VetSerializer.new(@appointment.vet).serializable_hash[:data][:attributes]
+        }
     end
 
     def create
@@ -25,6 +34,10 @@ class AppointmentsController < ApplicationController
     end
 
     private
+
+    def set_appointment
+        @appointment = Appointment.find(params[:id])
+    end
 
     def appointment_params
         params.require(:appointment).permit(:date, :time, :location, :duration, :animal_id, :vet_id)
