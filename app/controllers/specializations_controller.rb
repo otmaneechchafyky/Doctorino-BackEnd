@@ -1,4 +1,5 @@
 class SpecializationsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @specializations = []
     @specializations_list = Specialization.all

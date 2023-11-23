@@ -1,4 +1,5 @@
 class VetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_vet, only: %i[show destroy update]
   def index
     @vets = []
