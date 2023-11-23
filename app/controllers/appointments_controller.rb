@@ -33,6 +33,11 @@ class AppointmentsController < ApplicationController
         end
     end
 
+    def destroy
+        @appointment.destroy
+        render json: { message: 'Appointment deleted successfully.'}, status: :ok
+    end
+
     private
 
     def set_appointment
