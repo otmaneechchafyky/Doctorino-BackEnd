@@ -90,3 +90,4 @@ production:
   database: Doctorino_BackEnd_production
   username: Doctorino_BackEnd
   password: <%= ENV["DOCTORINO_BACKEND_DATABASE_PASSWORD"] %>
+  adapter: 'postgresql'
